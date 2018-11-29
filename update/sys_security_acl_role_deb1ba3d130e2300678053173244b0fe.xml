@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>harsha</sys_created_by>
+        <sys_created_on>2018-11-29 04:07:35</sys_created_on>
+        <sys_id>deb1ba3d130e2300678053173244b0fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_now_maps_map_configurations.itil</sys_name>
+        <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+        <sys_security_acl display_value="x_snc_now_maps_map_configurations">96b1ba3d130e2300678053173244b0fc</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_deb1ba3d130e2300678053173244b0fe</sys_update_name>
+        <sys_updated_by>harsha</sys_updated_by>
+        <sys_updated_on>2018-11-29 04:07:35</sys_updated_on>
+        <sys_user_role display_value="itil" name="itil">282bf1fac6112285017366cb5f867469</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

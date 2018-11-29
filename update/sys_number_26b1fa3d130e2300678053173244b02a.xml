@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
+    <sys_number action="INSERT_OR_UPDATE">
+        <category display_value="" name="x_snc_now_maps_map_configurations">x_snc_now_maps_map_configurations</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>conf</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>harsha</sys_created_by>
+        <sys_created_on>2018-11-29 04:07:36</sys_created_on>
+        <sys_id>26b1fa3d130e2300678053173244b02a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>conf</sys_name>
+        <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+        <sys_update_name>sys_number_26b1fa3d130e2300678053173244b02a</sys_update_name>
+        <sys_updated_by>harsha</sys_updated_by>
+        <sys_updated_on>2018-11-29 04:07:36</sys_updated_on>
+    </sys_number>
+</record_update>

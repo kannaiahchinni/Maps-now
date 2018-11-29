@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Map Configurations" max_length="40" name="x_snc_now_maps_map_configurations" type="collection">
+        <element dependent="table" dependent_on_field="table" label="Location Field 1 (City / Full Address)" mandatory="true" max_length="80" name="address_line_1" reference_qual="javascript:&quot;name=&quot; + current.table" type="field_name" use_dependent_field="true" use_reference_qualifier="advanced"/>
+        <element dependent="table" dependent_on_field="table" label="Location Field 2 (State)" max_length="80" name="address_line_2" reference_qual="javascript:&quot;name=&quot; + current.table" type="field_name" use_dependent_field="true" use_reference_qualifier="advanced"/>
+        <element choice_field="choice" dependent="table" dependent_on_field="table" label="Location Field 3 (Country)" max_length="80" name="address_line_3" reference_qual="javascript:&quot;name=&quot; + current.table" type="field_name" use_dependent_field="true" use_reference_qualifier="advanced"/>
+        <element label="Display Field Names" mandatory="true" max_length="1000" name="display_field_names" read_only="true" type="string"/>
+        <element dependent="table" dependent_on_field="table" label="Fields to be Displayed" mandatory="true" max_length="4000" name="fields_to_be_displayed" reference="sys_dictionary" reference_qual="javascript:&quot;name=&quot; + current.table" type="glide_list" use_dependent_field="true" use_reference_qualifier="advanced"/>
+        <element dependent="table" dependent_on_field="table" label="Filter Conditions" max_length="4000" name="filter_conditions" type="conditions" use_dependent_field="true"/>
+        <element label="Google Map Key" max_length="500" name="google_map_key" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element label="Table" mandatory="true" max_length="80" name="table" type="table_name"/>
+        <element label="User" mandatory="true" max_length="32" name="user" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element label="Use Location Field 2" max_length="40" name="use_location_field_2" type="boolean"/>
+        <element label="Use Location field 3" max_length="40" name="use_location_field_3" type="boolean"/>
+        <index name="index">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

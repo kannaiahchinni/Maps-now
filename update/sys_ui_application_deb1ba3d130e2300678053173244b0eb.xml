@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_application">
+    <sys_ui_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <hint/>
+        <name>Map Configurations</name>
+        <order/>
+        <roles>itil</roles>
+        <sys_class_name>sys_ui_application</sys_class_name>
+        <sys_created_by>harsha</sys_created_by>
+        <sys_created_on>2018-11-29 04:07:35</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>deb1ba3d130e2300678053173244b0eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Map Configurations</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+        <sys_update_name>sys_ui_application_deb1ba3d130e2300678053173244b0eb</sys_update_name>
+        <sys_updated_by>harsha</sys_updated_by>
+        <sys_updated_on>2018-11-29 04:07:35</sys_updated_on>
+    </sys_ui_application>
+</record_update>

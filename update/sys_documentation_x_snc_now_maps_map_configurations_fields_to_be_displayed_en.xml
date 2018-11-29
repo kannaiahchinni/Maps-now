@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="fields_to_be_displayed" label="Fields to be Displayed" language="en" table="x_snc_now_maps_map_configurations">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>fields_to_be_displayed</element>
+            <help/>
+            <hint/>
+            <label>Fields to be Displayed</label>
+            <language>en</language>
+            <name>x_snc_now_maps_map_configurations</name>
+            <plural>Fields to be Displayed</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>ritwik</sys_created_by>
+            <sys_created_on>2018-11-29 05:49:21</sys_created_on>
+            <sys_id>c9098f71138e2300678053173244b080</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Fields to be Displayed</sys_name>
+            <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_now_maps_map_configurations_fields_to_be_displayed_en</sys_update_name>
+            <sys_updated_by>ritwik</sys_updated_by>
+            <sys_updated_on>2018-11-29 05:49:21</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
