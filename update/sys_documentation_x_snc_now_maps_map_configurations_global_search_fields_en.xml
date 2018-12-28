@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="global_search_fields" label="Global Search Fields" language="en" table="x_snc_now_maps_map_configurations">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>global_search_fields</element>
+            <help/>
+            <hint/>
+            <label>Global Search Fields</label>
+            <language>en</language>
+            <name>x_snc_now_maps_map_configurations</name>
+            <plural>Global Search Fields</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-12-27 06:51:16</sys_created_on>
+            <sys_id>89b36b36dbeae70066be9875db9619bb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Global Search Fields</sys_name>
+            <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_now_maps_map_configurations_global_search_fields_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-12-27 06:51:16</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

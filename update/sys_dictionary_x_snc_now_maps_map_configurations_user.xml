@@ -55,15 +55,15 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>harsha</sys_created_by>
         <sys_created_on>2018-11-29 04:10:09</sys_created_on>
-        <sys_id>40f17e3d130e2300678053173244b0f2</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_id>4f4f5ffedbaae70066be9875db961910</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>User</sys_name>
         <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
         <sys_policy/>
         <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_now_maps_map_configurations_user</sys_update_name>
-        <sys_updated_by>ritwik</sys_updated_by>
-        <sys_updated_on>2018-11-29 05:41:25</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2018-12-27 06:32:05</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

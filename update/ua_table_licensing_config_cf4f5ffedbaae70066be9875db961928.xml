@@ -12,13 +12,13 @@
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>harsha</sys_created_by>
         <sys_created_on>2018-11-29 04:07:36</sys_created_on>
-        <sys_id>22b1fa3d130e2300678053173244b024</sys_id>
+        <sys_id>cf4f5ffedbaae70066be9875db961928</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_now_maps_map_configurations</sys_name>
         <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
         <sys_policy/>
         <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
-        <sys_update_name>ua_table_licensing_config_22b1fa3d130e2300678053173244b024</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_cf4f5ffedbaae70066be9875db961928</sys_update_name>
         <sys_updated_by>harsha</sys_updated_by>
         <sys_updated_on>2018-11-29 04:07:36</sys_updated_on>
     </ua_table_licensing_config>

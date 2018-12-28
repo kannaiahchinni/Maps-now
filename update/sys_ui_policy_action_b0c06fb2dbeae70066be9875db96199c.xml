@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>true</cleared>
+        <disabled>true</disabled>
+        <field>address_line_2</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-12-27 06:38:55</sys_created_on>
+        <sys_id>b0c06fb2dbeae70066be9875db96199c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>address_line_2</sys_name>
+        <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+        <sys_update_name>sys_ui_policy_action_b0c06fb2dbeae70066be9875db96199c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-12-27 06:38:55</sys_updated_on>
+        <table>x_snc_now_maps_map_configurations</table>
+        <ui_policy display_value="Disable other two fields related to location details if selected Location is from Location field">2f70abb2dbeae70066be9875db9619f2</ui_policy>
+        <visible>true</visible>
+    </sys_ui_policy_action>
+</record_update>

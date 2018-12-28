@@ -53,15 +53,15 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>ritwik</sys_created_by>
         <sys_created_on>2018-11-29 05:28:13</sys_created_on>
-        <sys_id>6df347bd134e2300678053173244b014</sys_id>
+        <sys_id>8b4f5ffedbaae70066be9875db96190d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Google Map Key</sys_name>
         <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
         <sys_policy/>
         <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_now_maps_map_configurations_google_map_key</sys_update_name>
-        <sys_updated_by>ritwik</sys_updated_by>
-        <sys_updated_on>2018-11-29 05:28:13</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2018-12-27 06:32:04</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

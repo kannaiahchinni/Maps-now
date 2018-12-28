@@ -13,7 +13,7 @@
         <label>Map Configurations</label>
         <live_feed_enabled>false</live_feed_enabled>
         <name>x_snc_now_maps_map_configurations</name>
-        <number_ref display_value="conf">26b1fa3d130e2300678053173244b02a</number_ref>
+        <number_ref display_value="CONF">26b1fa3d130e2300678053173244b02a</number_ref>
         <provider_class/>
         <read_access>true</read_access>
         <super_class/>
