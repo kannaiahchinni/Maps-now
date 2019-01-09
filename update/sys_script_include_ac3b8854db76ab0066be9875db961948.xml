@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_now_maps.UserConfigurations</api_name>
+        <client_callable>false</client_callable>
+        <description>To read the Logged in user configurations to display the Google Map and Calendar with information. </description>
+        <name>UserConfigurations</name>
+        <script><![CDATA[var UserConfigurations = Class.create();
+UserConfigurations.prototype = {
+    initialize: function () {
+        this.configTableName = 'x_snc_now_maps_map_configurations';
+        this.userId = gs.getUserID();
+        this.userConfig = {};
+        this.userConfigList = [];
+        this.choiceFields = [];
+        this.advancedFilters = {};
+    },
+
+    getDictionaryNames: function(fields) {
+
+        var fieldsMap = {};
+        var dictionaryGr = new GlideRecord('sys_dictionary');
+        dictionaryGr.addQuery('sys_id','IN',fields);
+        var encodedQuery = '^NQname='+this.userConfig.table.name+'^ORname=task^'+'column_labelIN'+ this.userConfig.globalSearchFields;
+        dictionaryGr.addEncodedQuery(encodedQuery);
+        gs.info(dictionaryGr.getEncodedQuery());
+        //q1.addOrCondition('column_label','IN', this.userConfig.globalSearchFields);
+        //q1.addEncodedQuery('name=incident^ORname=task');
+        //sys_idINa9dd649055b12300aadbd038fa9eec83,21dd649055b12300aadbd038fa9eec85,69dd649055b12300aadbd038fa9eec81^name=incident^NQcolumn_label=Short description^name=incident^ORname=task
+        dictionaryGr.query();
+        while( dictionaryGr.next() ) {
+            fieldsMap[dictionaryGr.getValue('column_label')] = dictionaryGr.getValue('element');
+        }
+        this.userConfig.fieldsMap = fieldsMap;
+    },
+
+    getUserConfigData: function () {
+
+        this.getUserConfiguration();
+        this.getDictionaryNames(this.userConfig.fieldsIds);
+        this.processFilterFields(this.userConfig.filter_condition);
+        this.getChoiceFilters(this.userConfig.table.name, this.choiceFields);
+        this.getAdvancedFiltersData(this.userConfig.filtersArray);
+        gs.info(JSON.stringify(this.getUserData(this.userConfig.table.name,this.userConfig.filter_condition,false)));
+        return this.userConfig;
+    },
+
+    prepareEncodedQuery: function(filters) {
+        var keys = Object.keys(filters);
+         var filtersArr = [];
+        for(var i =0; i< keys.length; i++ ) {
+            var column_name = keys[i];
+            var filterObj = filters[column_name];
+            filtersArr.push(column_name+filterObj.operator+filterObj.values);
+        }
+        return filtersArr.join("^");
+    },
+
+    getUserData: function(tableName, filters, isArray) {
+        var result = [];
+        var resultGr = new GlideRecord(tableName);
+        var filterQuery = !isArray ? filters: this.prepareEncodedQuery(filters);
+        resultGr.addEncodedQuery(filterQuery);
+        resultGr.query();
+        var fieldsList = this.userConfig.fields.replace(/, /g, ',').split(",");
+        while( resultGr.next() ) {
+            var res = {};
+            for(var i =0 ; i <  fieldsList.length ; i++ ) {
+                var fieldName = this.userConfig.fieldsMap[fieldsList[i]];
+                res[fieldsList[i]] = resultGr.getDisplayValue(fieldName);
+            }
+            res.sys_id =  resultGr.getValue('sys_id');
+            this.userConfig.is_location = parseInt(this.userConfig.is_location);
+                res.location = {};
+                res.location.latitude = this.userConfig.is_location == 1 ?  resultGr.location.latitude.toString() :  resultGr.getValue('latitude');
+                res.location.longitude = this.userConfig.is_location == 1 ?  resultGr.location.longitude.toString() : resultGr.getValue('longitude');
+                res.location.address = this.userConfig.is_location == 1 ? resultGr.location.name.toString() : this.getFullAddress(this.userConfig.location);
+            result.push(res);
+        }
+        return result;
+    },
+
+    getFullAddress: function(glideRecord, location) {
+
+        var address = [];
+        address.push(glideRecord.getValue(location.city));
+        address.push(glideRecord.getValue(location.state));
+        address.push(glideRecord.getValue(location.country));
+        return address.join(",");
+
+    },
+
+    /*
+        Prepare filters objects with filter query from table and store choice fields in the array.
+            {
+                "fieldName": xxx, "operator": "xssdss" , "value": "xssds"
+            }
+     */
+
+    processFilterFields: function (filterQuery) {
+
+        this.choiceFields = [];
+        filterQuery = filterQuery || this.userConfig.filter_condition;
+        var filtersArray = [];
+        var filters = filterQuery.replace("^EQ", '').split("^");
+        var regex = /([A-Z|=><]+)/;
+        for (var i = 0; i < filters.length; i++) {
+            var words = regex.exec(filters[i]);
+            if (words[0] === 'IN') {
+                this.choiceFields.push(filters[i].split(words[0])[0]);
+            }
+            filtersArray.push({
+                "fieldName": filters[i].split(words[0])[0],
+                "operator": words[0],
+                "value": filters[i].split(words[0])[1]
+            });
+        }
+        this.userConfig.filtersArray  = filtersArray
+    },
+
+    getAdvancedFiltersData: function (filters) {
+        var uniqueResult = {};
+
+        var tableGr = new GlideRecord(this.userConfig.table.name);
+        for (var i = 0; i < filters.length; i++) {
+            if (filters[i].operator != 'IN')
+            tableGr.addQuery(filters[i].fieldName, filters[i].operator, filters[i].value);
+        }
+        tableGr.query();
+        while (tableGr.next()) {
+            for (var j = 0; j < filters.length; j++) {
+                if (filters[j].operator != 'IN') {
+                    var element = filters[j].fieldName;
+                    var list = uniqueResult[element] || [];
+                    var valueData = tableGr.getValue(element);
+                    if(list.indexOf(valueData) < 0) {
+                        list.push(valueData);
+                        uniqueResult[element] = list;
+                        this.populateObject(tableGr.getDisplayValue(element), tableGr.getValue(element), false, 0, element);
+                    }
+                }
+            }
+        }
+
+        this.userConfig.advancedFilters = this.advancedFilters;
+    },
+
+    /*
+        Prepare object of choice fields for Advanced Filters..
+     */
+    getChoiceFilters: function (tableName, elements) {
+
+        //var choiceFilters = {};
+        var choiceGr = new GlideRecord('sys_choice');
+        var encodedQuery = 'name=' + tableName + '^ORname=task';
+        choiceGr.addEncodedQuery(encodedQuery);
+        choiceGr.addQuery('element', 'IN', elements.join(","));
+        choiceGr.addQuery('inactive', false);
+        choiceGr.orderBy('sequence');
+        choiceGr.query();
+        while (choiceGr.next()) {
+            this.populateObject(choiceGr.getValue('label'), choiceGr.getValue('value'), false, parseInt(choiceGr.getValue('sequence')), choiceGr.getValue('element'));
+        }
+
+    },
+
+    populateObject: function (label, value, selected, sequence, element) {
+        var list = this.advancedFilters[element] || [];
+        list.push({
+            "label": label,
+            "value": value,
+            "selected": selected,
+            "sequence": sequence
+        });
+        this.advancedFilters[element] = list;
+    },
+
+    getUserConfiguration: function () {
+
+        var configGr = new GlideRecord(this.configTableName);
+        configGr.addQuery('user', this.userId);
+        configGr.addActiveQuery();
+        configGr.query();
+        var config = {};
+        while (configGr.next()) {
+
+            config.fields = configGr.getDisplayValue('fields_to_be_displayed');
+            config.fieldsIds = configGr.getValue('fields_to_be_displayed');
+            config.filter_condition = configGr.getValue('filter_conditions');
+            config.globalSearchFields = configGr.getDisplayValue('global_search_fields');
+
+            config.user = {
+                "name": configGr.getDisplayValue('user'),
+                "sys_id": configGr.getValue('user')
+            };
+
+            config.table = {
+                "name": configGr.getDisplayValue('table'),
+                "sys_id": configGr.getValue('table')
+            };
+
+            config.is_location = configGr.getValue('is_location');
+            config.location= {};
+            config.location.city = configGr.getValue('address_line_1');
+            config.location.state = configGr.getValue('address_line_2');
+            config.location.country = configGr.getValue('address_line_3');
+
+            this.userConfigList.push(config);
+        }
+        this.userConfig = this.userConfigList[0];
+    },
+
+    type: 'UserConfigurations'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-12-31 06:57:59</sys_created_on>
+        <sys_id>ac3b8854db76ab0066be9875db961948</sys_id>
+        <sys_mod_count>41</sys_mod_count>
+        <sys_name>UserConfigurations</sys_name>
+        <sys_package display_value="Now Maps" source="x_snc_now_maps">3511323d130e2300678053173244b0fd</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Now Maps">3511323d130e2300678053173244b0fd</sys_scope>
+        <sys_update_name>sys_script_include_ac3b8854db76ab0066be9875db961948</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-01-09 11:00:36</sys_updated_on>
+    </sys_script_include>
+</record_update>
